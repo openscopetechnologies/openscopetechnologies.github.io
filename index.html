@@ -61,7 +61,30 @@ body>p{
     top: 0;
     right: -20px;
     z-index: 2;
+    stroke: chartreuse;
+    stroke-width: 10px;
+    stroke-dashoffset: 1;
+    stroke-dasharray: 0;
+    animation: svg-logo 20s infinite;
 }
+@keyframes svg-logo {
+    0%{
+        stroke-dasharray: 100;
+    }
+    40%{
+    stroke-dasharray: 200;
+    }
+    100%{
+        stroke-dasharray: 400;
+    }
+    40%{
+        stroke-dasharray: 200;
+        }
+        0%{
+            stroke-dasharray: 100;
+        }
+    }
+
 nav{
     position: fixed;
     top: 10px;
@@ -288,13 +311,17 @@ footer{
 <body>
     <canvas class="can"></canvas>
     <svg id="logo-svg" width="30%" height="30%" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g>
-            <circle id="big-circle" cx="250" cy="250" r="150" fill="#ffffff" />
-            <rect id="Rectangle 1" x="130" y="130" width="240" height="30" fill="gray" />
-            <rect id="Rectangle 5" x="130" y="340" width="240" height="30" fill="gray" />
-            <rect id="Rectangle 3" x="130" y="160" width="30" height="90" fill="gray" />
-            <rect id="Rectangle 4" x="340" y="250" width="30" height="90" fill="gray" />
-            <circle id="small circle" cx="250" cy="250" r="20" fill="gray" />
+        <g id="LOGO">
+            <path id="big"
+                d="M499.5 250C499.5 387.795 387.795 499.5 250 499.5C112.205 499.5 0.5 387.795 0.5 250C0.5 112.205 112.205 0.5 250 0.5C387.795 0.5 499.5 112.205 499.5 250Z"
+                fill="#45489A" stroke="white" />
+            <path id="small"
+                d="M299.5 250C299.5 277.338 277.338 299.5 250 299.5C222.662 299.5 200.5 277.338 200.5 250C200.5 222.662 222.662 200.5 250 200.5C277.338 200.5 299.5 222.662 299.5 250Z"
+                fill="#FF0000" stroke="#FF0000" />
+            <line id="1" x1="120.939" y1="64.3385" x2="380.938" y2="63.6823" stroke="#FF0000" stroke-width="48.7209" />
+            <line id="2" x1="145.64" y1="250" x2="145.64" y2="150" stroke="#FF0000" stroke-width="48.7209" />
+            <line id="3" x1="356.64" y1="350" x2="356.64" y2="250" stroke="#FF0000" stroke-width="48.7209" />
+            <line id="4" x1="120.939" y1="436.296" x2="380.938" y2="435.64" stroke="#FF0000" stroke-width="48.7209" />
         </g>
     </svg>
     <h1>Welcome to OpenScope Technologies</h1>
