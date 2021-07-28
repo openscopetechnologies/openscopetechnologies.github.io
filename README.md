@@ -1,1 +1,0 @@
-# openscopetechnologies.github.io
