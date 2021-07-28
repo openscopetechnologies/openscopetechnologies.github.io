@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./canvas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>OpenScopeTechnologies</title>
+<style>
+.can{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+*{
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inconsolata', monospace;
+}
+html {
+    overflow-y: scroll;
+}
+body{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: gray;
+    overflow: hidden;
+}
+h1{
+    position:absolute;
+    top:50%;
+    left: 20%;
+    font-size: 3em;
+    z-index: 2;
+}
+body>p{
+    position:absolute;
+   top:70%;
+   left: 50%;
+   font-size: 1.2em;
+    z-index: 2;
+}
+#logo-svg{
+    position: absolute;
+    top: 0;
+    right: -20px;
+    z-index: 2;
+}
+nav{
+    position: fixed;
+    top: 10px;
+    left:10px;
+    display: flex;
+    height: 30px;
+    min-width: 30vw;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.5em;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0);
+box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.3);
+backdrop-filter: blur( 0.0px );
+-webkit-backdrop-filter: blur( 0.0px );
+border-radius: 20px;
+
+}
+nav>a{
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 5px;
+    border-radius: 20px;
+}
+nav>a:hover{
+    background-color: #fff;
+    color: gray;
+    transition: linear 0.3s;
+    letter-spacing: 2px;
+}
+section{
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    padding:10%;
+}
+
+#about>p{
+    display: flex;
+    position: relative;
+    top: 30%;
+    padding:10%;
+    margin-top: 20px;
+    font-size: 1.2em;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.info{
+    position: relative;
+    z-index: 2;
+}
+.info>h2{
+    position: relative;
+    z-index: 2;
+}
+
+#about>.info>h4{
+    position: relative;
+    top: 20px;
+    left: 5%;
+    font-size: 1.5em;
+    z-index: 2;
+}
+#services>p{
+    display: flex;
+    position: relative;
+    top: 10%;
+    padding: 10%;
+    font-size: 1.2em;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.service{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 5%;
+    margin-top: 20px;
+    gap:10px;
+    z-index: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.service>div{
+    display: flex;
+    position: relative;
+    max-height: 400px;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 2em;
+    background: rgba(255, 255, 255, 0);
+box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.3);
+backdrop-filter: blur( 0.0px );
+-webkit-backdrop-filter: blur( 0.0px );
+border-radius: 20px;
+}
+.service>div:hover{
+    background-color: #fff;
+    color: gray;
+    transition: linear 0.3s;
+    letter-spacing: 2px;
+}
+#services>.info>h4{
+    position: relative;
+    top: 20px;
+    left: 5%;
+    font-size: 1.5em;
+    z-index: 2;
+}
+#contact>p{
+    display: flex;
+    position: relative;
+    top: 10%;
+    padding: 10%;
+    font-size: 1.2em;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+#contact>.info>h4{
+    position: relative;
+    top: 20px;
+    left: 5%;
+    font-size: 1.5em;
+    z-index: 2;
+}
+
+.social-link{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    padding: 20%;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.social-link>div{
+    height: 200px;
+    padding: 20px;
+    width: 200px;
+}
+.social-link>div>a{
+    height: 200px;
+    padding: 20px;
+    width: 200px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: gray;
+    background: rgba(255, 255, 255, 0);
+box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.3);
+backdrop-filter: blur( 0.0px );
+-webkit-backdrop-filter: blur( 0.0px );
+}
+.social-link>div>a:hover{
+    background-color: #fff;
+    color: gray;
+    transition: linear 0.3s;
+    letter-spacing: 2px;
+}
+footer{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    color: gray;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    background-color: #ffffff;
+}
+
+/* @media screen and (max-width: 720px) {
+    #logo-svg{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        z-index: 2;
+        transition: linear 1s;
+    }
+    nav>a{
+        display: none;
+    }
+    nav{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 20px;
+        height: 70px;
+        z-index: 2;
+        transition: linear 1s;
+    }
+  } */
+
+</style>
+</head>
+
+<body>
+    <canvas class="can"></canvas>
+    <svg id="logo-svg" width="30%" height="30%" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g>
+            <circle id="big-circle" cx="250" cy="250" r="150" fill="#ffffff" />
+            <rect id="Rectangle 1" x="130" y="130" width="240" height="30" fill="gray" />
+            <rect id="Rectangle 5" x="130" y="340" width="240" height="30" fill="gray" />
+            <rect id="Rectangle 3" x="130" y="160" width="30" height="90" fill="gray" />
+            <rect id="Rectangle 4" x="340" y="250" width="30" height="90" fill="gray" />
+            <circle id="small circle" cx="250" cy="250" r="20" fill="gray" />
+        </g>
+    </svg>
+    <h1>Welcome to OpenScope Technologies</h1>
+    <P><em>We are not an organization but having a goal to be. We have just started up with some experienced
+            professionals to provide better IT services!</em></P>
+    <nav class="manu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="home"></section>
+    <section id="services">
+        <div class="info">
+            <h2>Our Services ...
+                <hr>
+            </h2>
+            <h4>Our service will reduse your electricity bill.</h4>
+        </div>
+        <div class="service">
+            <div>Cloud Services - AWS,Azure,GCP</div>
+            <div>UI/UX Design</div>
+            <div>Web Application Development</div>
+            <div>Quality Assuarance - Automation</div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="info">
+            <h2>Who We Are?
+                <hr>
+            </h2>
+            <h4>We are the team of Experts to fulfill your requirements to grow business!</h4>
+        </div>
+        <p>We believe our best customers are small and medium-sized businesses markets. Problem — Who cannot easily
+            measure campaign ROI because existing solutions are too expensive, complicated to deploy, display a dizzying
+            array of non-actionable charts. Solution — Low cost, easy to deploy analytic system designed for non
+            technical markets who need actionable metrics.</p>
+    </section>
+    <section id="contact">
+        <div class="info">
+            <h2>Connect with Us ...
+                <hr>
+            </h2>
+            <h4>We'd love to here from you!</h4>
+        </div>
+        <div class="social-link">
+            <div><a href="https://twitter.com/openscope290" target="_blank"><i class="fab fa-twitter"></i></a></div>
+            <div><a href="https://github.com/openscopetechnologies" target="_blank"><i class="fab fa-github"></i></a></div>
+            <div><a href="https://www.linkedin.com/in/open-scope-647505218/" target="_blank"><i class="fab fa-linkedin-in"></i></a></div>
+            <div><a href="https://account.microsoft.com/profile/" target="_blank"><i class="fas fa-mail-bulk"></i></a></div>
+        </div>
+    </section>
+    <footer>2021 - OpenScope Technologies - All right reserved</footer>
+    <script>
+
+const canvas = document.querySelector(".can")
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const particlesArray = [];
+let hue = 0;
+window.addEventListener("resize", function(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+})
+const mouse = {
+    x: undefined,
+    y: undefined,
+}
+canvas.addEventListener("mousemove", function(e){
+    mouse.x = e.x;
+    mouse.y = e.y;
+    for(let i=0;i<5;i++){
+        particlesArray.push(new Particle());
+    }
+})
+canvas.addEventListener("click", function(e){
+    mouse.x = e.x;
+    mouse.y = e.y;
+    for(let i=0;i<5;i++){
+        particlesArray.push(new Particle());
+    }
+})
+class Particle{
+    constructor(){
+        this.x=mouse.x;
+        this.y=mouse.y;
+        // this.x=Math.random() * canvas.width;
+        // this.y=Math.random() * canvas.height;
+        this.size = Math.random()*5+1;
+        this.speedX = Math.random()*3 -1.5;
+        this.speedY = Math.random()*3 -1.5;
+        this.color = `hsl(${hue},100%,50%)`;
+    }
+    update(){
+        this.x+=this.speedX;
+        this.y+=this.speedY;
+        if(this.size >0.2) this.size -=0.1;
+    }
+    draw(){
+        ctx.fillStyle=this.color;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2)
+        ctx.fill();
+    }
+}
+function init(){
+    for(let i=0;i<100;i++){
+       particlesArray.push(new Particle());
+    }
+}
+init();
+function handleParticles(){
+    for(let i=0;i<particlesArray.length;i++){
+        particlesArray[i].update();
+        particlesArray[i].draw();
+        for(j=i;j<particlesArray.length;j++){
+            dx=particlesArray[i].x-particlesArray[j].x;
+            dy=particlesArray[i].y-particlesArray[j].y;
+            const distance = Math.sqrt(dx*dx+dy*dy);
+            if(distance<100){
+                ctx.beginPath();
+                ctx.strokeStyle = particlesArray[i].color;
+                ctx.lineWidth=0.5;
+                ctx.moveTo(particlesArray[i].x,particlesArray[i].y)
+                ctx.lineTo(particlesArray[j].x,particlesArray[j].y)
+                ctx.stroke();
+                ctx.closePath()
+            }
+        }
+        if(particlesArray[i].size<=0.3){
+            particlesArray.splice(i,1);
+            i--;
+        }
+    }
+}
+function animate(){
+    ctx.clearRect(0,0, canvas.width,canvas.height);
+    // ctx.fillStyle = "rgba(0,0,0,1)";
+    // ctx.fillRect(0,0,canvas.width,canvas.height);
+    hue+=15;
+    handleParticles();
+    requestAnimationFrame(animate);
+}
+animate();
+
+document.onclick = function(event) {
+    var target = event.target || event.srcElement;
+    target.style.background = `hsl(${hue},100%,50%)`;
+   };
+</script>
+</body>
+
+</html>
