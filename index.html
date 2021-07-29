@@ -22,7 +22,6 @@
     top: 0;
     left: 0;
     z-index: 1;
-    cursor: crosshair;
 }
 *{
     scroll-behavior: smooth;
@@ -30,7 +29,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inconsolata', monospace;
-    cursor: grabbing;
 }
 html {
     overflow-y: scroll;
@@ -58,16 +56,11 @@ body>p{
 }
 #logo-svg{
     position: absolute;
-    top: 0;
-    right: -20px;
+    top: 10px;
+    right: 0;
     z-index: 2;
-    stroke: chartreuse;
-    stroke-width: 10px;
-    stroke-dashoffset: 1;
-    stroke-dasharray: 0;
-    animation: svg-logo 20s infinite;
 }
-@keyframes svg-logo {
+/* @keyframes svg-logo {
     0%{
         stroke-dasharray: 100;
     }
@@ -83,7 +76,7 @@ body>p{
         0%{
             stroke-dasharray: 100;
         }
-    }
+    } */
 
 nav{
     position: fixed;
@@ -305,24 +298,22 @@ footer{
 
 
 
+
+
 </style>
 </head>
 
 <body>
     <canvas class="can"></canvas>
+    <div id="invertedcursor"></div>
     <svg id="logo-svg" width="30%" height="30%" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="LOGO">
-            <path id="big"
-                d="M499.5 250C499.5 387.795 387.795 499.5 250 499.5C112.205 499.5 0.5 387.795 0.5 250C0.5 112.205 112.205 0.5 250 0.5C387.795 0.5 499.5 112.205 499.5 250Z"
-                fill="#ffffff" stroke="white" />
-            <path id="small"
-                d="M299.5 250C299.5 277.338 277.338 299.5 250 299.5C222.662 299.5 200.5 277.338 200.5 250C200.5 222.662 222.662 200.5 250 200.5C277.338 200.5 299.5 222.662 299.5 250Z"
-                fill="gray" stroke="gray" />
-            <line id="1" x1="120.939" y1="64.3385" x2="380.938" y2="63.6823" stroke="gray" stroke-width="48.7209" />
-            <line id="2" x1="145.64" y1="250" x2="145.64" y2="150" stroke="gray" stroke-width="48.7209" />
-            <line id="3" x1="356.64" y1="350" x2="356.64" y2="250" stroke="gray" stroke-width="48.7209" />
-            <line id="4" x1="120.939" y1="436.296" x2="380.938" y2="435.64" stroke="gray" stroke-width="48.7209" />
-        </g>
+        <g id="Logo">
+            <rect id="Rectangle1" width="40" height="180" fill="white"/>
+            <rect id="Rectangle2" x="40" width="240" height="40" fill="white"/>
+            <rect id="Rectangle3" x="240" y="180" width="40" height="180" fill="white"/>
+            <rect id="Rectangle4" y="320" width="240" height="40" fill="white"/>
+            <circle id="Ellipse" cx="140" cy="180" r="50" fill="white"/>
+            </g>
     </svg>
     <h1>Welcome to OpenScope Technologies</h1>
     <P><em>We are not an organization but having a goal to be. We have just started up with some experienced
@@ -355,10 +346,10 @@ footer{
             </h2>
             <h4>We are the team of Experts to fulfill your requirements to grow business!</h4>
         </div>
-        <p><em>We believe our best customers are small and medium-sized businesses markets. Problem — Who cannot easily
+        <p>We believe our best customers are small and medium-sized businesses markets. Problem — Who cannot easily
             measure campaign ROI because existing solutions are too expensive, complicated to deploy, display a dizzying
             array of non-actionable charts. Solution — Low cost, easy to deploy analytic system designed for non
-            technical markets who need actionable metrics.</em></p>
+            technical markets who need actionable metrics.</p>
     </section>
     <section id="contact">
         <div class="info">
@@ -369,14 +360,16 @@ footer{
         </div>
         <div class="social-link">
             <div><a href="https://twitter.com/openscope290" target="_blank"><i class="fab fa-twitter"></i></a></div>
-            <div><a href="#" target="_blank"><i class="fab fa-github"></i></a></div>
-            <div><a href="https://www.linkedin.com/in/open-scope-647505218/" target="_blank"><i class="fab fa-linkedin-in"></i></a></div>
-            <div><a href="https://account.microsoft.com/profile/" target="_blank"><i class="fas fa-mail-bulk"></i></a></div>
+            <div><a href="https://github.com/openscopetechnologies" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <div><a href="https://www.linkedin.com/in/open-scope-647505218/" target="_blank"><i
+                        class="fab fa-linkedin-in"></i></a></div>
+            <div><a href="https://account.microsoft.com/profile/" target="_blank"><i class="fas fa-mail-bulk"></i></a>
+            </div>
         </div>
     </section>
     <footer>2021 - OpenScope Technologies - All right reserved</footer>
     <script>
-
 const canvas = document.querySelector(".can")
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -391,26 +384,26 @@ const mouse = {
     x: undefined,
     y: undefined,
 }
-canvas.addEventListener("mousemove", function(e){
-    mouse.x = e.x;
-    mouse.y = e.y;
-    for(let i=0;i<5;i++){
-        particlesArray.push(new Particle());
-    }
-})
-canvas.addEventListener("click", function(e){
-    mouse.x = e.x;
-    mouse.y = e.y;
-    for(let i=0;i<5;i++){
-        particlesArray.push(new Particle());
-    }
-})
+// canvas.addEventListener("mousemove", function(e){
+//     mouse.x = e.x;
+//     mouse.y = e.y;
+//     for(let i=0;i<20;i++){
+//         particlesArray.push(new Particle());
+//     }
+// })
+// canvas.addEventListener("click", function(e){
+//     mouse.x = e.x;
+//     mouse.y = e.y;
+//     for(let i=0;i<20;i++){
+//         particlesArray.push(new Particle());
+//     }
+// })
 class Particle{
     constructor(){
-        this.x=mouse.x;
-        this.y=mouse.y;
-        // this.x=Math.random() * canvas.width;
-        // this.y=Math.random() * canvas.height;
+        // this.x=mouse.x;
+        // this.y=mouse.y;
+        this.x=Math.random() * canvas.width+20;
+        this.y=Math.random() * canvas.height+20;
         this.size = Math.random()*5+1;
         this.speedX = Math.random()*3 -1.5;
         this.speedY = Math.random()*3 -1.5;
@@ -445,7 +438,7 @@ function handleParticles(){
             if(distance<100){
                 ctx.beginPath();
                 ctx.strokeStyle = particlesArray[i].color;
-                ctx.lineWidth=0.5;
+                ctx.lineWidth=0.1;
                 ctx.moveTo(particlesArray[i].x,particlesArray[i].y)
                 ctx.lineTo(particlesArray[j].x,particlesArray[j].y)
                 ctx.stroke();
@@ -459,19 +452,32 @@ function handleParticles(){
     }
 }
 function animate(){
-    ctx.clearRect(0,0, canvas.width,canvas.height);
-    // ctx.fillStyle = "rgba(0,0,0,1)";
-    // ctx.fillRect(0,0,canvas.width,canvas.height);
-    hue+=5;
+    // ctx.clearRect(0,0, canvas.width,canvas.height);
+    ctx.fillStyle = "rgba(0,0,0,1)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    hue+=10;
     handleParticles();
+    for(let i=0;i<3;i++){
+        particlesArray.push(new Particle());
+    }
     requestAnimationFrame(animate);
 }
 animate();
 
-document.onclick = function(event) {
-    var target = event.target || event.srcElement;
-    target.style.background = `hsl(${hue},100%,50%)`;
+document.onclick = function() {
+    var target = document.querySelector("body");
+    target.style.color = `hsl(${hue},100%,50%)`;
    };
+// document.onclick = function(event) {
+//     var target = event.target || event.srcElement;
+
+//     if(target.tagName=="CANVAS"){
+//     target.style.background = `hsl(${hue},100%,50%)`;
+//     }
+
+//    };
+
+   
 </script>
 </body>
 
